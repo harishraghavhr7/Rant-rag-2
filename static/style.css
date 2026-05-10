@@ -1,0 +1,348 @@
+:root {
+  --bg: #07111f;
+  --panel: #0d1728;
+  --panel-2: #101c31;
+  --text: #e5eefc;
+  --muted: #8ea0bf;
+  --border: #22324d;
+  --accent: #5ad07a;
+  --user: rgba(29, 78, 216, 0.22);
+  --bot: rgba(17, 24, 39, 0.92);
+  --active: rgba(90, 208, 122, 0.18);
+  --has-session: rgba(90, 208, 122, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(29, 78, 216, 0.18), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(90, 208, 122, 0.16), transparent 30%),
+    linear-gradient(135deg, #07111f, #0a1424 45%, #07111f);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: rgba(13, 23, 40, 0.96);
+  border-right: 1px solid var(--border);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.field span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+input, textarea, button {
+  font: inherit;
+}
+
+input, textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 12px 14px;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: rgba(90, 208, 122, 0.65);
+}
+
+.calendar-controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.month-nav {
+  padding: 10px 14px;
+}
+
+.month-year {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--accent);
+  color: #062212;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+button.month-nav {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.calendar {
+  margin-top: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 700;
+  padding: 6px 0;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(16, 28, 49, 0.9);
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.day:hover {
+  border-color: rgba(90, 208, 122, 0.5);
+}
+
+.day.other-month {
+  color: var(--muted);
+  cursor: default;
+}
+
+.day.other-month:hover {
+  border-color: var(--border);
+}
+
+.day.has-session {
+  background: var(--has-session);
+  border-color: rgba(90, 208, 122, 0.5);
+  font-weight: 700;
+}
+
+.day.active {
+  background: var(--active);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+.rag-section {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.rag-section h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.query-input {
+  width: 100%;
+  min-height: 60px;
+  margin-bottom: 8px;
+}
+
+#queryBtn {
+  width: 100%;
+}
+
+.chat-panel {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  padding: 20px;
+  gap: 14px;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(13, 23, 40, 0.88);
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.chat-header p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.summary {
+  display: none;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(90, 208, 122, 0.25);
+  background: rgba(90, 208, 122, 0.08);
+  color: #c8f7d5;
+}
+
+.rag-results {
+  display: none;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(29, 78, 216, 0.3);
+  background: rgba(29, 78, 216, 0.08);
+  color: #bfdbfe;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.rag-results.show {
+  display: block;
+}
+
+.rag-context {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(29, 78, 216, 0.2);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chat {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(13, 23, 40, 0.76);
+  padding: 20px;
+  overflow-y: auto;
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.msg {
+  max-width: 78%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  border: 1px solid var(--border);
+}
+
+.msg.user {
+  align-self: flex-end;
+  background: var(--user);
+  border-color: rgba(29, 78, 216, 0.45);
+}
+
+.msg.bot {
+  align-self: flex-start;
+  background: var(--bot);
+}
+
+.meta {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+  max-height: 160px;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chat-panel {
+    padding-top: 12px;
+  }
+
+  .msg {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .composer {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

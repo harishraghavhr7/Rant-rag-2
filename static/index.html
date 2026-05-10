@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RANT-RAG Chat</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>RANT-RAG</h1>
+        <p>Chat Calendar & RAG</p>
+      </div>
+
+      <label class="field">
+        <span>User ID</span>
+        <input id="userId" type="text" value="demo-user" />
+      </label>
+
+      <div class="calendar-controls">
+        <button id="prevMonth" class="month-nav">← Prev</button>
+        <span id="monthYear" class="month-year"></span>
+        <button id="nextMonth" class="month-nav">Next →</button>
+      </div>
+
+      <div id="calendar" class="calendar"></div>
+
+      <div class="rag-section">
+        <h3>Search History</h3>
+        <textarea id="queryInput" placeholder="What did you do...?" class="query-input"></textarea>
+        <button id="queryBtn">Search</button>
+      </div>
+    </aside>
+
+    <main class="chat-panel">
+      <header class="chat-header">
+        <div>
+          <h2 id="activeTitle">No day selected</h2>
+          <p id="activeMeta">Pick a day from the calendar.</p>
+        </div>
+        <button id="clearBtn" class="secondary">Clear View</button>
+      </header>
+
+      <div id="summary" class="summary"></div>
+      <div id="ragResults" class="rag-results"></div>
+      <div id="chat" class="chat"></div>
+
+      <div class="composer">
+        <textarea id="message" placeholder="Type your message..."></textarea>
+        <button id="sendBtn">Send</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
